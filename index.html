@@ -1,539 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Claude Code — Developer Reference</title>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #f7f6f2;
-    --surface: #ffffff;
-    --surface2: #f0ede6;
-    --border: #ddd9cf;
-    --text: #1a1814;
-    --text-muted: #6b6560;
-    --accent: #cc4b00;
-    --accent2: #1a5f7a;
-    --accent3: #5a4a8a;
-    --accent4: #2d7a4f;
-    --tag-bg: #ffe8d6;
-    --tag-text: #7a2a00;
-    --mono: 'JetBrains Mono', 'Fira Code', monospace;
-    --sans: 'Syne', sans-serif;
-    --col-gap: 16px;
-    --section-gap: 22px;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Claude Code — Developer Reference</title>
+  <meta name="description"
+    content="A searchable reference for Claude Code: slash commands, keyboard shortcuts, CLI flags, and project config paths.">
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--mono);
-    font-size: 11px;
-    line-height: 1.5;
-    padding: 20px;
-  }
-
-  /* ── HEADER ── */
-  .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 3px solid var(--text);
-    padding-bottom: 14px;
-    margin-bottom: 20px;
-  }
-  .header-left { display: flex; align-items: baseline; gap: 12px; }
-  .logo {
-    font-family: var(--sans);
-    font-size: 28px;
-    font-weight: 800;
-    letter-spacing: -1px;
-    line-height: 1;
-  }
-  .logo span { color: var(--accent); }
-  .subtitle {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--text-muted);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-  .header-meta {
-    text-align: right;
-    font-size: 9.5px;
-    color: var(--text-muted);
-    line-height: 1.7;
-  }
-  .header-meta strong { color: var(--text); font-weight: 600; }
-
-  /* ── GRID LAYOUT ── */
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: var(--col-gap);
-    align-items: start;
-  }
-  .grid-2col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--col-gap);
-    align-items: start;
-    margin-top: var(--col-gap);
-  }
-  .span2 { grid-column: span 2; }
-
-  /* ── SECTION ── */
-  .section {
-    background: var(--surface);
-    border: 1.5px solid var(--border);
-    border-radius: 4px;
-    overflow: hidden;
-  }
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    padding: 7px 10px;
-    border-bottom: 1.5px solid var(--border);
-  }
-  .section-icon {
-    width: 18px;
-    height: 18px;
-    border-radius: 3px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    flex-shrink: 0;
-    font-weight: 700;
-  }
-  .section-title {
-    font-family: var(--sans);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-  .section-body { padding: 8px 10px; }
-
-  /* ── TABLE ── */
-  table { width: 100%; border-collapse: collapse; }
-  tr:not(:last-child) td { border-bottom: 1px solid var(--surface2); }
-  td { padding: 4px 3px; vertical-align: top; }
-  td:first-child { padding-right: 8px; white-space: nowrap; }
-
-  /* ── KEY / CODE ── */
-  kbd {
-    display: inline-flex;
-    align-items: center;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-bottom-width: 2px;
-    border-radius: 3px;
-    padding: 1px 5px;
-    font-family: var(--mono);
-    font-size: 9.5px;
-    font-weight: 600;
-    white-space: nowrap;
-    color: var(--text);
-    letter-spacing: 0;
-  }
-  code {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    padding: 1px 5px;
-    font-family: var(--mono);
-    font-size: 9.5px;
-    color: var(--accent2);
-    white-space: nowrap;
-  }
-  .slash {
-    font-family: var(--mono);
-    font-size: 9.5px;
-    font-weight: 700;
-    color: var(--accent);
-    background: var(--tag-bg);
-    border: 1px solid #f5c4a0;
-    border-radius: 3px;
-    padding: 1px 5px;
-    white-space: nowrap;
-  }
-  .desc { color: var(--text-muted); font-size: 9.5px; line-height: 1.4; }
-
-  /* ── COLOR VARIANTS ── */
-  .orange .section-header { background: #fff4ed; }
-  .orange .section-icon { background: #cc4b00; color: #fff; }
-  .orange .section-title { color: var(--accent); }
-
-  .blue .section-header { background: #e8f3f8; }
-  .blue .section-icon { background: #1a5f7a; color: #fff; }
-  .blue .section-title { color: var(--accent2); }
-
-  .purple .section-header { background: #eeebf8; }
-  .purple .section-icon { background: #5a4a8a; color: #fff; }
-  .purple .section-title { color: var(--accent3); }
-
-  .green .section-header { background: #e6f5ec; }
-  .green .section-icon { background: #2d7a4f; color: #fff; }
-  .green .section-title { color: var(--accent4); }
-
-  .gray .section-header { background: var(--surface2); }
-  .gray .section-icon { background: #555; color: #fff; }
-  .gray .section-title { color: #333; }
-
-  /* ── INLINE GROUP LABEL ── */
-  .group-label {
-    font-family: var(--sans);
-    font-size: 9px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--text-muted);
-    padding: 5px 3px 2px;
-    border-bottom: 1px solid var(--surface2);
-    margin-top: 2px;
-  }
-
-  /* ── TIP BOX ── */
-  .tip-box {
-    background: var(--surface2);
-    border-left: 3px solid var(--accent);
-    padding: 5px 8px;
-    margin-top: 8px;
-    font-size: 9px;
-    color: var(--text-muted);
-    border-radius: 0 3px 3px 0;
-  }
-  .tip-box strong { color: var(--text); }
-
-  /* ── PREFIX TABLE ── */
-  .prefix-row { display: flex; gap: 10px; flex-wrap: wrap; }
-  .prefix-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    padding: 3px 7px 3px 4px;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    flex: 1;
-    min-width: 90px;
-  }
-  .prefix-key {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--accent);
-    font-family: var(--mono);
-  }
-  .prefix-desc { font-size: 9px; color: var(--text-muted); line-height: 1.3; }
-
-  /* ── FOOTER ── */
-  .footer {
-    margin-top: 16px;
-    border-top: 1.5px solid var(--border);
-    padding-top: 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 9px;
-    color: var(--text-muted);
-  }
-  .footer a { color: var(--accent2); text-decoration: none; }
-
-  /* ── PRINT ── */
-  @media print {
-    body { background: #fff; padding: 10mm 12mm; font-size: 9.5px; }
-    .section { break-inside: avoid; }
-    @page { size: A4 landscape; margin: 10mm; }
-  }
-</style>
+  <!-- Apply the saved theme before first paint so the page never flashes. -->
+  <script>
+    try {
+      var t = localStorage.getItem('cc-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) { }
+  </script>
 </head>
+
 <body>
 
-<!-- HEADER -->
-<div class="header">
-  <div class="header-left">
-    <div class="logo">Claude <span>Code</span></div>
-    <div class="subtitle">Developer Reference Card</div>
-  </div>
-  <div class="header-meta">
-    <strong>Version:</strong> Claude Code 2.1.x &nbsp;|&nbsp; <strong>Default Model:</strong> Opus 4.8<br>
-    <strong>OS:</strong> Linux / macOS / Windows (WSL) &nbsp;|&nbsp; <strong>Updated:</strong> June 2026<br>
-    <strong>Docs:</strong> docs.claude.com/en/docs/claude-code/overview
-  </div>
-</div>
+  <a class="skip-link" href="#cards">Skip to reference</a>
 
-<!-- ROW 1: 3 columns -->
-<div class="grid">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="logo">Claude <span>Code</span></div>
+      <div class="logo-sub">Developer Reference</div>
 
-  <!-- ① SLASH COMMANDS: Session & Context -->
-  <div class="section orange">
-    <div class="section-header">
-      <div class="section-icon">⊟</div>
-      <div class="section-title">Slash — Session &amp; Context</div>
-    </div>
-    <div class="section-body">
-      <table>
-        <tr><td><span class="slash">/clear</span></td><td class="desc">Wipe conversation history &amp; free context</td></tr>
-        <tr><td><span class="slash">/compact</span></td><td class="desc">Summarize conversation to free context. Use <code>/compact focus on tests</code> to specify focus</td></tr>
-        <tr><td><span class="slash">/context</span></td><td class="desc">Visualize what is consuming your context window</td></tr>
-        <tr><td><span class="slash">/usage</span></td><td class="desc">Token usage, API cost, plan limits. (<code>/cost</code> &amp; <code>/stats</code> open tabs here)</td></tr>
-        <tr><td><span class="slash">/resume</span></td><td class="desc">Resume a previous session. <code>/resume auth-refactor</code></td></tr>
-        <tr><td><span class="slash">/rename</span></td><td class="desc">Name current session. <code>/rename feature-auth</code></td></tr>
-        <tr><td><span class="slash">/rewind</span></td><td class="desc">Roll back to a previous checkpoint</td></tr>
-        <tr><td><span class="slash">/branch</span></td><td class="desc">Branch conversation into a parallel path</td></tr>
-        <tr><td><span class="slash">/diff</span></td><td class="desc">View interactive diff of all changes made</td></tr>
-        <tr><td><span class="slash">/copy</span></td><td class="desc">Copy last response. <code>/copy 2</code> for 2nd-latest</td></tr>
-        <tr><td><span class="slash">/export</span></td><td class="desc">Export conversation as a text file</td></tr>
-      </table>
-      <div class="tip-box"><strong>Pro tip:</strong> Use <code>/compact</code> when context usage exceeds 80%; use <code>/clear</code> when switching to an entirely new task.</div>
-    </div>
-  </div>
-
-  <!-- ② SLASH COMMANDS: Code & Project -->
-  <div class="section blue">
-    <div class="section-header">
-      <div class="section-icon">⌥</div>
-      <div class="section-title">Slash — Code &amp; Project</div>
-    </div>
-    <div class="section-body">
-      <table>
-        <tr><td><span class="slash">/init</span></td><td class="desc">Initialize project; generates CLAUDE.md with project context</td></tr>
-        <tr><td><span class="slash">/memory</span></td><td class="desc">View &amp; edit CLAUDE.md and auto-memory files</td></tr>
-        <tr><td><span class="slash">/code-review</span></td><td class="desc">Review diff for bugs. <code>--fix</code> applies fixes, <code>--comment</code> adds PR comments</td></tr>
-        <tr><td><span class="slash">/simplify</span></td><td class="desc">3-agent parallel review (replaces deprecated /review)</td></tr>
-        <tr><td><span class="slash">/batch</span></td><td class="desc">Run a bundle of tasks as a single compound command</td></tr>
-        <tr><td><span class="slash">/doctor</span></td><td class="desc">Diagnose installation, auth, and config issues</td></tr>
-        <tr><td><span class="slash">/insights</span></td><td class="desc">View patterns and suggestions from past sessions</td></tr>
-        <tr><td><span class="slash">/goal</span></td><td class="desc">Set a high-level goal for the session; tracks progress</td></tr>
-        <tr><td><span class="slash">/loop</span></td><td class="desc">Schedule a recurring task (e.g., run tests every save)</td></tr>
-        <tr><td><span class="slash">/release-notes</span></td><td class="desc">Show recent Claude Code version changelog</td></tr>
-        <tr><td><span class="slash">/hooks</span></td><td class="desc">View configured automation hook events</td></tr>
-      </table>
-      <div class="tip-box"><strong>Note:</strong> Custom slash commands: add <code>.claude/commands/&lt;name&gt;.md</code> in your project, invoke with <code>/name</code>.</div>
-    </div>
-  </div>
-
-  <!-- ③ SLASH COMMANDS: Config & Model -->
-  <div class="section purple">
-    <div class="section-header">
-      <div class="section-icon">⚙</div>
-      <div class="section-title">Slash — Config &amp; Model</div>
-    </div>
-    <div class="section-body">
-      <table>
-        <tr><td><span class="slash">/model</span></td><td class="desc">Switch model. <code>/model opus</code> &nbsp;/&nbsp; <code>/model sonnet</code> &nbsp;/&nbsp; <code>/model haiku</code></td></tr>
-        <tr><td><span class="slash">/effort</span></td><td class="desc">Set reasoning effort: <code>low</code>, <code>medium</code>, <code>high</code>, <code>xhigh</code>, <code>max</code></td></tr>
-        <tr><td><span class="slash">/fast</span></td><td class="desc">Toggle fast output mode (speed-optimised API settings)</td></tr>
-        <tr><td><span class="slash">/status</span></td><td class="desc">Show session state: model, mode, cost, settings</td></tr>
-        <tr><td><span class="slash">/config</span></td><td class="desc">Open the full interactive settings interface</td></tr>
-        <tr><td><span class="slash">/permissions</span></td><td class="desc">View &amp; manage tool permissions interactively</td></tr>
-        <tr><td><span class="slash">/mcp</span></td><td class="desc">Manage MCP server connections. <code>/mcp enable</code> &nbsp;/&nbsp; <code>/mcp disable</code></td></tr>
-        <tr><td><span class="slash">/vim</span></td><td class="desc">Toggle vim keybinding mode (Normal + Insert modes)</td></tr>
-        <tr><td><span class="slash">/theme</span></td><td class="desc">Change colour theme</td></tr>
-        <tr><td><span class="slash">/terminal-setup</span></td><td class="desc">Configure keybindings for VS Code, Cursor, Zed, etc.</td></tr>
-      </table>
-      <div class="tip-box"><strong>Models available:</strong> Opus 4.8 (default, 1M ctx) · Sonnet 4.6 · Haiku 4.5</div>
-    </div>
-  </div>
-
-</div><!-- /grid row 1 -->
-
-<!-- ROW 2: 2-col layout -->
-<div class="grid-2col">
-
-  <!-- LEFT COLUMN: shortcuts + prefixes stacked -->
-  <div style="display:flex; flex-direction:column; gap:var(--col-gap);">
-
-    <!-- ④ KEYBOARD SHORTCUTS — Essential -->
-    <div class="section orange">
-      <div class="section-header">
-        <div class="section-icon">⌨</div>
-        <div class="section-title">Keyboard Shortcuts — Essential</div>
+      <div class="search-wrap">
+        <input id="search" type="search" autocomplete="off" spellcheck="false"
+          placeholder="Search commands, shortcuts, flags…" aria-label="Search the reference">
+        <span class="search-hint">/</span>
       </div>
-      <div class="section-body">
-        <div class="group-label">Session Control</div>
-        <table>
-          <tr><td><kbd>Ctrl</kbd>+<kbd>C</kbd></td><td class="desc">Interrupt running op. First press clears input, second exits</td></tr>
-          <tr><td><kbd>Esc</kbd></td><td class="desc">Interrupt Claude mid-turn, keeping work done so far</td></tr>
-          <tr><td><kbd>Esc</kbd>+<kbd>Esc</kbd></td><td class="desc">Clear input draft or open rewind menu for a checkpoint</td></tr>
-          <tr><td><kbd>Ctrl</kbd>+<kbd>D</kbd></td><td class="desc">Exit Claude Code</td></tr>
-          <tr><td><kbd>Ctrl</kbd>+<kbd>L</kbd></td><td class="desc">Redraw screen (fix garbled display)</td></tr>
-          <tr><td><kbd>Ctrl</kbd>+<kbd>R</kbd></td><td class="desc">Reverse-search command history</td></tr>
-        </table>
-        <div class="group-label">Background &amp; Agents</div>
-        <table>
-          <tr><td><kbd>Ctrl</kbd>+<kbd>B</kbd></td><td class="desc">Move running bash or agent to background (tmux: press twice)</td></tr>
-          <tr><td><kbd>Ctrl</kbd>+<kbd>X</kbd>+<kbd>K</kbd></td><td class="desc">Kill all background subagents (press twice within 3 s)</td></tr>
-          <tr><td><kbd>Ctrl</kbd>+<kbd>T</kbd></td><td class="desc">Toggle the task list panel</td></tr>
-          <tr><td><kbd>Ctrl</kbd>+<kbd>O</kbd></td><td class="desc">Toggle transcript viewer (detailed tool usage, MCP calls)</td></tr>
-        </table>
-        <div class="group-label">Modes</div>
-        <table>
-          <tr><td><kbd>Shift</kbd>+<kbd>Tab</kbd></td><td class="desc">Cycle permission modes: default → acceptEdits → plan → auto</td></tr>
-          <tr><td><kbd>Alt</kbd>+<kbd>P</kbd></td><td class="desc">Switch model (Opus / Sonnet / Haiku)</td></tr>
-          <tr><td><kbd>Alt</kbd>+<kbd>T</kbd></td><td class="desc">Toggle extended thinking</td></tr>
-          <tr><td><kbd>Alt</kbd>+<kbd>O</kbd></td><td class="desc">Toggle fast mode</td></tr>
-        </table>
+
+      <div class="filters" role="group" aria-label="Filter by category">
+        <button class="chip" data-tag="all" aria-pressed="true">All</button>
+        <button class="chip" data-tag="slash" aria-pressed="false">Slash</button>
+        <button class="chip" data-tag="keys" aria-pressed="false">Keys</button>
+        <button class="chip" data-tag="cli" aria-pressed="false">CLI</button>
+        <button class="chip" data-tag="config" aria-pressed="false">Config</button>
       </div>
+
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle theme">☾</button>
     </div>
+  </header>
 
-    <!-- ⑤ KEYBOARD SHORTCUTS — Input & Editing -->
-    <div class="section blue">
-      <div class="section-header">
-        <div class="section-icon">✎</div>
-        <div class="section-title">Keyboard Shortcuts — Input &amp; Editing</div>
-      </div>
-      <div class="section-body">
-        <div class="group-label">Line Editing (Readline)</div>
-        <table>
-          <tr><td><kbd>Ctrl</kbd>+<kbd>A</kbd></td><td class="desc">Move cursor to start of line</td></tr>
-          <tr><td><kbd>Ctrl</kbd>+<kbd>E</kbd></td><td class="desc">Move cursor to end of line</td></tr>
-          <tr><td><kbd>Ctrl</kbd>+<kbd>K</kbd></td><td class="desc">Delete to end of line</td></tr>
-          <tr><td><kbd>Ctrl</kbd>+<kbd>U</kbd></td><td class="desc">Delete from cursor to line start</td></tr>
-          <tr><td><kbd>Ctrl</kbd>+<kbd>W</kbd></td><td class="desc">Delete previous word</td></tr>
-          <tr><td><kbd>Ctrl</kbd>+<kbd>Y</kbd></td><td class="desc">Paste text deleted with K/U/W</td></tr>
-          <tr><td><kbd>Alt</kbd>+<kbd>B</kbd> / <kbd>F</kbd></td><td class="desc">Move cursor back / forward one word</td></tr>
-        </table>
-        <div class="group-label">New Line &amp; External Editor</div>
-        <table>
-          <tr><td><kbd>\</kbd>+<kbd>Enter</kbd></td><td class="desc">New line (works in every terminal)</td></tr>
-          <tr><td><kbd>Ctrl</kbd>+<kbd>J</kbd></td><td class="desc">New line (universal, no config needed)</td></tr>
-          <tr><td><kbd>Shift</kbd>+<kbd>Enter</kbd></td><td class="desc">New line in iTerm2, Warp, Ghostty, Windows Terminal</td></tr>
-          <tr><td><kbd>Ctrl</kbd>+<kbd>G</kbd></td><td class="desc">Open prompt in external editor (also <kbd>Ctrl</kbd>+<kbd>X</kbd> <kbd>Ctrl</kbd>+<kbd>E</kbd>)</td></tr>
-          <tr><td><kbd>Cmd</kbd>+<kbd>V</kbd></td><td class="desc">Paste image from clipboard (macOS)</td></tr>
-        </table>
-      </div>
-    </div>
+  <main>
+    <div class="meta-strip" id="metaStrip"></div>
+    <div class="cards" id="cards"></div>
+    <p class="empty" id="empty" hidden>No matches. <b>Esc</b> to clear the search.</p>
+  </main>
 
-    <!-- ⑥ QUICK PREFIXES -->
-    <div class="section green">
-      <div class="section-header">
-        <div class="section-icon">»</div>
-        <div class="section-title">Quick Input Prefixes</div>
-      </div>
-      <div class="section-body" style="padding-top:8px;">
-        <div class="prefix-row">
-          <div class="prefix-item">
-            <span class="prefix-key">/</span>
-            <div class="prefix-desc">Open slash<br>command menu</div>
-          </div>
-          <div class="prefix-item">
-            <span class="prefix-key">!</span>
-            <div class="prefix-desc">Run bash command<br>directly in session</div>
-          </div>
-          <div class="prefix-item">
-            <span class="prefix-key">@</span>
-            <div class="prefix-desc">Autocomplete<br>file path mention</div>
-          </div>
-        </div>
-        <div class="tip-box" style="margin-top:8px;"><strong>Vim mode:</strong> Run <code>/vim</code> to enable. Includes Normal/Insert modes, <code>h/j/k/l</code>, <code>d/c/y/p</code>, and text objects like <code>iw</code>, <code>i"</code>.</div>
-      </div>
-    </div>
+  <footer class="footer" id="footer"></footer>
 
-  </div><!-- /left column -->
+  <!-- ============================================================
+     Renderer first, then one file per card.
+     The order of these <script> tags is the order of the cards.
+     To add a card: create data/<n>-<name>.js and add it here.
+     ============================================================ -->
+  <script src="assets/js/app.js"></script>
 
-  <!-- RIGHT COLUMN: CLI flags -->
-  <div style="display:flex; flex-direction:column; gap:var(--col-gap);">
+  <script src="data/00-meta.js"></script>
+  <script src="data/01-slash-session.js"></script>
+  <script src="data/02-slash-code.js"></script>
+  <script src="data/03-slash-config.js"></script>
+  <script src="data/04-keys-essential.js"></script>
+  <script src="data/05-keys-input.js"></script>
+  <script src="data/06-prefixes.js"></script>
+  <script src="data/07-cli-flags.js"></script>
+  <script src="data/08-auth-cli.js"></script>
+  <script src="data/09-claude-md.js"></script>
 
-    <!-- ⑦ CLI FLAGS -->
-    <div class="section green">
-      <div class="section-header">
-        <div class="section-icon">⚑</div>
-        <div class="section-title">CLI Flags &amp; Options</div>
-      </div>
-      <div class="section-body">
-        <div class="group-label">Session Start</div>
-        <table>
-          <tr><td><code>-p "query"</code></td><td class="desc">Print mode — single query, then exit</td></tr>
-          <tr><td><code>-c</code></td><td class="desc">Continue most recent session</td></tr>
-          <tr><td><code>-r "name"</code></td><td class="desc">Resume a named / numbered session</td></tr>
-          <tr><td><code>-n "name"</code></td><td class="desc">Set session display name at startup</td></tr>
-          <tr><td><code>--model opus</code></td><td class="desc">Override model for this session</td></tr>
-          <tr><td><code>--init</code></td><td class="desc">Initialize project with CLAUDE.md</td></tr>
-          <tr><td><code>-w</code></td><td class="desc">Start in an isolated git worktree</td></tr>
-          <tr><td><code>--fork-session</code></td><td class="desc">Fork from a resumed session</td></tr>
-        </table>
-        <div class="group-label">Automation &amp; CI/CD</div>
-        <table>
-          <tr><td><code>--max-turns 10</code></td><td class="desc">Limit autonomous turns (great for pipelines)</td></tr>
-          <tr><td><code>--output-format json</code></td><td class="desc">Output as <code>text</code>, <code>json</code>, or <code>stream-json</code></td></tr>
-          <tr><td><code>--allowedTools</code></td><td class="desc">Restrict tools. e.g., <code>"Edit,Bash(npm:*)"</code></td></tr>
-          <tr><td><code>--permission-mode auto</code></td><td class="desc">Set permission mode for the session</td></tr>
-          <tr><td><code>--enable-auto-mode</code></td><td class="desc">Start with Auto Mode enabled</td></tr>
-          <tr><td><code>--from-pr 123</code></td><td class="desc">Start session linked to a PR / MR / Bitbucket PR</td></tr>
-          <tr><td><code>--bare</code></td><td class="desc">Scripted mode — skip hooks, LSP, plugins</td></tr>
-          <tr><td><code>--dangerously-skip-permissions</code></td><td class="desc">Skip all permission prompts (use in trusted CI only)</td></tr>
-        </table>
-        <div class="group-label">Debug &amp; Plugins</div>
-        <table>
-          <tr><td><code>--debug</code></td><td class="desc">Enable verbose debug logging</td></tr>
-          <tr><td><code>--channels</code></td><td class="desc">Relay approval prompts to Telegram / Discord</td></tr>
-          <tr><td><code>--plugin-dir ./path</code></td><td class="desc">Load a plugin directory or <code>.zip</code> archive</td></tr>
-          <tr><td><code>--plugin-url https://…</code></td><td class="desc">Fetch &amp; load a remote plugin <code>.zip</code></td></tr>
-        </table>
-      </div>
-    </div>
-
-    <!-- ⑧ AUTH & DIAGNOSTIC COMMANDS -->
-    <div class="section gray">
-      <div class="section-header">
-        <div class="section-icon">🔑</div>
-        <div class="section-title">Auth &amp; Diagnostic Commands</div>
-      </div>
-      <div class="section-body">
-        <div class="group-label">Authentication</div>
-        <table>
-          <tr><td><code>claude auth login</code></td><td class="desc">Log in or switch accounts</td></tr>
-          <tr><td><code>claude auth status</code></td><td class="desc">Check current auth state</td></tr>
-          <tr><td><code>claude auth logout</code></td><td class="desc">Clear stored credentials</td></tr>
-        </table>
-        <div class="group-label">Installation &amp; Health</div>
-        <table>
-          <tr><td><code>claude --version</code></td><td class="desc">Show installed version</td></tr>
-          <tr><td><code>claude doctor</code></td><td class="desc">Diagnose installation, auth, and config issues</td></tr>
-          <tr><td><code>claude install</code></td><td class="desc">Migrate from deprecated npm install</td></tr>
-        </table>
-        <div class="group-label">Install (one-liner)</div>
-        <table>
-          <tr><td colspan="2"><code>curl -fsSL https://claude.ai/install.sh | bash</code></td></tr>
-        </table>
-      </div>
-    </div>
-
-    <!-- ⑨ CLAUDE.md QUICK REFERENCE -->
-    <div class="section purple">
-      <div class="section-header">
-        <div class="section-icon">📄</div>
-        <div class="section-title">CLAUDE.md — Project Config</div>
-      </div>
-      <div class="section-body">
-        <table>
-          <tr><td><code>.claude/CLAUDE.md</code></td><td class="desc">Project-level instructions (auto-loaded)</td></tr>
-          <tr><td><code>~/.claude/CLAUDE.md</code></td><td class="desc">Global user instructions applied to every session</td></tr>
-          <tr><td><code>.claude/commands/</code></td><td class="desc">Project custom slash commands (one <code>.md</code> per command)</td></tr>
-          <tr><td><code>~/.claude/commands/</code></td><td class="desc">Personal global custom slash commands</td></tr>
-          <tr><td><code>.claude/settings.json</code></td><td class="desc">Project permission &amp; tool settings</td></tr>
-          <tr><td><code>~/.claude/settings.json</code></td><td class="desc">Global user settings &amp; defaults</td></tr>
-        </table>
-        <div class="tip-box"><strong>What to put in CLAUDE.md:</strong> build &amp; test commands, architecture overview, code conventions, folder structure, team preferences. Claude reads this at session start to stay aligned with your project.</div>
-      </div>
-    </div>
-
-  </div><!-- /right column -->
-
-</div><!-- /grid row 2 -->
-
-<!-- FOOTER -->
-<div class="footer">
-  <span>Claude Code 2.1.x &nbsp;·&nbsp; Default model: <strong>Opus 4.8</strong> (1M token context) &nbsp;·&nbsp; Sonnet 4.6 &nbsp;·&nbsp; Haiku 4.5</span>
-  <span>Official docs: <a href="https://docs.claude.com/en/docs/claude-code/overview">docs.claude.com</a> &nbsp;·&nbsp; Changelog: <a href="https://github.com/anthropics/claude-code/releases">github.com/anthropics/claude-code</a></span>
-  <span>Print: Landscape A4 recommended</span>
-</div>
-
+  <script>CHEATSHEET.render();</script>
 </body>
+
 </html>
