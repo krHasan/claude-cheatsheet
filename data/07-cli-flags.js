@@ -132,7 +132,7 @@ CHEATSHEET.add({
         {
           key: "--remote-control",
           type: "code",
-          desc: "Drive this session from claude.ai/code or your phone",
+          desc: "Drive this session from claude.ai/code or your phone. `--rc` for short",
         },
         {
           key: "--plugin-dir ./path",

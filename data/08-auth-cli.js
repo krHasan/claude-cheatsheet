@@ -65,6 +65,11 @@ CHEATSHEET.add({
           desc: "Manage background agents",
         },
         {
+          key: "claude remote-control",
+          type: "code",
+          desc: "Serve sessions to claude.ai/code & the Claude app",
+        },
+        {
           key: "claude mcp",
           type: "code",
           desc: "Configure & manage MCP servers",
