@@ -1,7 +1,7 @@
 // Edit this file to change the section. Reload the page to see it.
 CHEATSHEET.add({
   id: "keys-input",
-  title: "Keyboard — Input & Editing",
+  title: "6 Keyboard — Input & Editing",
   icon: "✎",
   color: "blue",
   tag: "keys",

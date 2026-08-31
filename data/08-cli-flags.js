@@ -1,33 +1,18 @@
 // Edit this file to change the section. Reload the page to see it.
 CHEATSHEET.add({
   id: "cli-flags",
-  title: "CLI Flags & Options",
+  title: "8 CLI Flags & Options",
   icon: "⚑",
   color: "green",
   tag: "cli",
   groups: [
     {
-      label: "Session Start",
+      label: "Launch",
       rows: [
         {
           key: '-p "query"',
           type: "code",
           desc: "Print mode — single query, then exit",
-        },
-        {
-          key: "-c",
-          type: "code",
-          desc: "Continue most recent session",
-        },
-        {
-          key: "-r [id|search]",
-          type: "code",
-          desc: "Resume by session ID, or open the picker",
-        },
-        {
-          key: '-n "name"',
-          type: "code",
-          desc: "Set session display name at startup",
         },
         {
           key: "--model opus",
@@ -53,11 +38,6 @@ CHEATSHEET.add({
           key: "-w",
           type: "code",
           desc: "Start in an isolated git worktree (`--tmux` for panes)",
-        },
-        {
-          key: "--fork-session",
-          type: "code",
-          desc: "Fork from a resumed session",
         },
         {
           key: "--safe-mode",
@@ -93,11 +73,6 @@ CHEATSHEET.add({
           key: "--json-schema",
           type: "code",
           desc: "Validate structured output against a JSON Schema",
-        },
-        {
-          key: "--from-pr 123",
-          type: "code",
-          desc: "Resume a session linked to a PR by number / URL",
         },
         {
           key: "--bare",

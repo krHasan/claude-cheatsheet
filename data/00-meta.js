@@ -2,7 +2,7 @@
 CHEATSHEET.meta({
   brand: "Claude Code",
   tagline: "Developer Reference",
-  version: "2.1.246",
+  version: "2.1.251",
   defaultModel: "Opus 5",
   models: ["Opus 5 (default)", "Fable 5", "Sonnet 5", "Haiku 4.5"],
   updated: "August 2026",

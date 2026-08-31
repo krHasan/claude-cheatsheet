@@ -1,7 +1,7 @@
 // Edit this file to change the section. Reload the page to see it.
 CHEATSHEET.add({
   id: "remote-control",
-  title: "Remote Control — Phone & Web",
+  title: "11 Remote Control — Phone & Web",
   icon: "📱",
   color: "blue",
   tag: "cli",

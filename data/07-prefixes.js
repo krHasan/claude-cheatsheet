@@ -1,7 +1,7 @@
 // Edit this file to change the section. Reload the page to see it.
 CHEATSHEET.add({
   id: "prefixes",
-  title: "Quick Input Prefixes",
+  title: "7 Quick Input Prefixes",
   icon: "»",
   color: "green",
   tag: "keys",

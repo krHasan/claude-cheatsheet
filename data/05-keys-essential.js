@@ -1,7 +1,7 @@
 // Edit this file to change the section. Reload the page to see it.
 CHEATSHEET.add({
   id: "keys-essential",
-  title: "Keyboard — Essential",
+  title: "5 Keyboard — Essential",
   icon: "⌨",
   color: "orange",
   tag: "keys",
@@ -67,7 +67,7 @@ CHEATSHEET.add({
         {
           key: "Ctrl+T",
           type: "kbd",
-          desc: "Toggle the task list panel",
+          desc: "Toggle Claude's to-do checklist (not the background list — see `/tasks`)",
         },
         {
           key: "Ctrl+O",

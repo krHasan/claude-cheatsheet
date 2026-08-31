@@ -1,7 +1,7 @@
 // Edit this file to change the section. Reload the page to see it.
 CHEATSHEET.add({
   id: "slash-session",
-  title: "Slash — Session & Context",
+  title: "1 Slash — Context & Output",
   icon: "⊟",
   color: "orange",
   tag: "slash",
@@ -30,24 +30,9 @@ CHEATSHEET.add({
           desc: "Token usage for this session & your account (`/cost` is an alias)",
         },
         {
-          key: "/resume",
-          type: "slash",
-          desc: "Return to an earlier conversation, or list them. `/resume 2`",
-        },
-        {
-          key: "/rename",
-          type: "slash",
-          desc: "Name current session. `/rename feature-auth`",
-        },
-        {
           key: "/rewind",
           type: "slash",
           desc: "Rewind to a checkpoint or earlier turn. `/rewind 3`",
-        },
-        {
-          key: "/branch",
-          type: "slash",
-          desc: "Branch conversation into a parallel path",
         },
         {
           key: "/diff",
@@ -60,14 +45,9 @@ CHEATSHEET.add({
           desc: "Copy last response. `/copy 2` for 2nd-latest",
         },
         {
-          key: "/export",
+          key: "/tasks",
           type: "slash",
-          desc: "Export conversation as plain text",
-        },
-        {
-          key: "/sessions",
-          type: "slash",
-          desc: "List sessions by name & recency; attach to a background one",
+          desc: "List background work — running subagents, shells, and their status",
         },
       ],
     },

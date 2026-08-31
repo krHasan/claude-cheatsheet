@@ -1,7 +1,7 @@
 // Edit this file to change the section. Reload the page to see it.
 CHEATSHEET.add({
   id: "claude-md",
-  title: "CLAUDE.md — Project Config",
+  title: "10 CLAUDE.md — Project Config",
   icon: "📄",
   color: "purple",
   tag: "config",

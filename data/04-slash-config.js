@@ -1,7 +1,7 @@
 // Edit this file to change the section. Reload the page to see it.
 CHEATSHEET.add({
   id: "slash-config",
-  title: "Slash — Config & Model",
+  title: "4 Slash — Config & Model",
   icon: "⚙",
   color: "purple",
   tag: "slash",
@@ -27,7 +27,7 @@ CHEATSHEET.add({
         {
           key: "/status",
           type: "slash",
-          desc: "Show login, active subagents, and background task list",
+          desc: "Show model, effort level, session directory & account info",
         },
         {
           key: "/config",

@@ -20,6 +20,8 @@ assets/css/styles.css   all styling; design tokens at the top
 assets/js/app.js        renderer, search/filter, theme toggle, copy-to-clipboard
 data/00-meta.js         version, default model, platform list, footer links
 data/NN-<name>.js       one card per file
+RECONCILIATION.md       what each /update-commands pass changed, newest first
+.claude/skills/         project skills — currently /update-commands
 ```
 
 `index.html` holds no reference content. Everything visible comes from `data/`.
@@ -32,7 +34,7 @@ calls `CHEATSHEET.add({...})` with one card:
 ```js
 CHEATSHEET.add({
   id: "slash-session",            // DOM id / anchor
-  title: "Slash — Session & Context",
+  title: "1 Slash — Session & Context",    // number prefix = the file's number, unpadded
   icon: "⊟",
   color: "orange",                // orange | blue | purple | green | gray
   tag: "slash",                   // slash | keys | cli | config — drives the filter chips
@@ -59,6 +61,11 @@ and `<` literally.
 To add a whole card, create the data file and add a `<script src>` for it in `index.html` —
 **tag order there is card order**. `app.js` never needs editing to add content.
 
+Card titles open with their file number, unpadded (`1`, `2`, … `11`), while the filename keeps
+the zero-padded `NN-` so the directory sorts in card order. Inserting a card mid-page therefore
+means renumbering the files after it, their titles, and the `<script>` list together — keep all
+three in step.
+
 ## Cards, not columns
 
 `.cards` uses CSS multi-column (`columns: 3 460px`), so cards flow top-to-bottom then across
@@ -83,7 +90,14 @@ Version and model facts live in `data/00-meta.js` only — `version`, `defaultMo
 `updated`, `platforms`. They render into both the meta strip and the footer, so there is one
 place to update them.
 
-The command tables were last reconciled against Claude Code 2.1.246 (August 2026).
+The command tables were last reconciled against Claude Code 2.1.251 (August 2026).
+
+Run `/update-commands` to redo that reconciliation against whatever build is installed now.
+The skill carries the full procedure — how to read the command and keybinding tables straight
+out of the `claude` binary, which doc pages are authoritative for what, and how to judge a
+command that appears in one source but not the other. It records each pass in
+`RECONCILIATION.md` and updates the version markers, so start there rather than auditing the
+page by hand.
 
 ## Checking a change
 
