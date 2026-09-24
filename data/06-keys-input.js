@@ -32,12 +32,12 @@ CHEATSHEET.add({
         {
           key: "Ctrl+W",
           type: "kbd",
-          desc: "Delete previous word",
+          desc: "Delete back to previous whitespace — a whole path or `--flag=value`",
         },
         {
           key: "Ctrl+Y",
           type: "kbd",
-          desc: "Paste text deleted with K/U/W",
+          desc: "Paste text deleted with K/U/W; [[Alt+Y]] then cycles older deletions",
         },
         {
           key: "Alt+B / F / D",
@@ -67,7 +67,12 @@ CHEATSHEET.add({
         {
           key: "Shift+Enter",
           type: "kbd",
-          desc: "New line in iTerm2, Warp, Ghostty, Windows Terminal",
+          desc: "New line in iTerm2, WezTerm, Ghostty, Kitty, Warp, Apple Terminal, Windows Terminal; `/terminal-setup` for others",
+        },
+        {
+          key: "Option+Enter",
+          type: "kbd",
+          desc: "New line on macOS once Option-as-Meta is on",
         },
         {
           key: "Ctrl+G",
@@ -75,9 +80,9 @@ CHEATSHEET.add({
           desc: "Open prompt in external editor (also [[Ctrl+X Ctrl+E]])",
         },
         {
-          key: "Ctrl+V / Cmd+V",
+          key: "Ctrl+V",
           type: "kbd",
-          desc: "Paste image from clipboard ([[Cmd+V]] in iTerm2)",
+          desc: "Paste image from clipboard. [[Cmd+V]] in iTerm2, [[Alt+V]] on Windows & WSL",
         },
       ],
     },

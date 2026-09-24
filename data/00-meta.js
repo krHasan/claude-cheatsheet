@@ -2,10 +2,10 @@
 CHEATSHEET.meta({
   brand: "Claude Code",
   tagline: "Developer Reference",
-  version: "2.1.251",
-  defaultModel: "Opus 5",
-  models: ["Opus 5 (default)", "Fable 5", "Sonnet 5", "Haiku 4.5"],
-  updated: "August 2026",
+  version: "2.1.281",
+  defaultModel: "Opus 5.5",
+  models: ["Opus 5.5 (default)", "Fable 5.1", "Sonnet 5", "Haiku 4.5"],
+  updated: "September 2026",
   platforms:
     "macOS 13+ · Windows 10+ · Ubuntu 20.04+ · Debian 10+ · Alpine 3.19+",
   links: [

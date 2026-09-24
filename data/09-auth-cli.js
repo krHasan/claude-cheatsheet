@@ -12,12 +12,12 @@ CHEATSHEET.add({
         {
           key: "claude auth login",
           type: "code",
-          desc: "Log in or switch accounts",
+          desc: "Log in or switch accounts. `--sso`, `--console`, `--email`",
         },
         {
           key: "claude auth status",
           type: "code",
-          desc: "Check current auth state",
+          desc: "Auth state as JSON (`--text` for prose); exits 1 when logged out",
         },
         {
           key: "claude auth logout",
@@ -42,12 +42,12 @@ CHEATSHEET.add({
         {
           key: "claude doctor",
           type: "code",
-          desc: "Read-only install / settings diagnostics",
+          desc: "Read-only install / settings diagnostics; `/doctor` in a session can also fix",
         },
         {
           key: "claude update",
           type: "code",
-          desc: "Apply an update now (native installs auto-update)",
+          desc: "Apply an update now (native installs auto-update). Alias `upgrade`",
         },
         {
           key: "claude install [ver]",
@@ -57,13 +57,43 @@ CHEATSHEET.add({
       ],
     },
     {
-      label: "Other Subcommands",
+      label: "Background Sessions",
       rows: [
         {
           key: "claude agents",
           type: "code",
-          desc: "Manage background agents",
+          desc: "Agent view — monitor & dispatch background sessions. `--json` to script it",
         },
+        {
+          key: "claude attach <id>",
+          type: "code",
+          desc: "Open a background session in this terminal",
+        },
+        {
+          key: "claude logs <id>",
+          type: "code",
+          desc: "Print a background session's recent output",
+        },
+        {
+          key: "claude stop <id>",
+          type: "code",
+          desc: "Stop it, keeping the conversation. Alias `kill`",
+        },
+        {
+          key: "claude rm <id>",
+          type: "code",
+          desc: "Delete it, and its worktree when safe. Transcript stays resumable",
+        },
+        {
+          key: "claude respawn [id]",
+          type: "code",
+          desc: "Restart on the current version; `--all` for every running one",
+        },
+      ],
+    },
+    {
+      label: "Other Subcommands",
+      rows: [
         {
           key: "claude remote-control",
           type: "code",
@@ -82,12 +112,12 @@ CHEATSHEET.add({
         {
           key: "claude import",
           type: "code",
-          desc: "Import config from Codex / Gemini CLI",
+          desc: "Import config from Codex, Gemini CLI or Cursor. `--dry-run`",
         },
         {
           key: "claude ultrareview",
           type: "code",
-          desc: "Cloud multi-agent review of branch or PR",
+          desc: "Cloud multi-agent review of branch or PR. `--json`, `--post`",
         },
       ],
     },

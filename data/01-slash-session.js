@@ -12,7 +12,7 @@ CHEATSHEET.add({
         {
           key: "/clear",
           type: "slash",
-          desc: "Wipe conversation history & free context",
+          desc: "Start fresh with empty context; the old conversation stays resumable. `/clear <name>` labels it. Aliases `/reset`, `/new`",
         },
         {
           key: "/compact",
@@ -22,22 +22,32 @@ CHEATSHEET.add({
         {
           key: "/context",
           type: "slash",
-          desc: "Visualize what is consuming your context window",
+          desc: "Visualize context usage as a colored grid, with suggestions. `/context all` expands the breakdown",
         },
         {
           key: "/usage",
           type: "slash",
-          desc: "Token usage for this session & your account (`/cost` is an alias)",
+          desc: "Session cost, plan usage limits & activity stats. `/cost` and `/stats` are aliases",
         },
         {
           key: "/rewind",
           type: "slash",
-          desc: "Rewind to a checkpoint or earlier turn. `/rewind 3`",
+          desc: "Rewind conversation and/or code to an earlier point, or summarize from there. Aliases `/checkpoint`, `/undo`",
         },
         {
           key: "/diff",
           type: "slash",
-          desc: "View interactive diff of all changes made",
+          desc: "Review working-tree changes, including the edits Claude has made",
+        },
+        {
+          key: "/autocompact",
+          type: "slash",
+          desc: "Set how full context gets before auto-compacting — `/autocompact 500k` or `auto`",
+        },
+        {
+          key: "/btw",
+          type: "slash",
+          desc: "Ask a side question without adding it to the conversation",
         },
         {
           key: "/copy",
@@ -47,7 +57,7 @@ CHEATSHEET.add({
         {
           key: "/tasks",
           type: "slash",
-          desc: "List background work — running subagents, shells, and their status",
+          desc: "View & manage background work — subagents (finished ones too) and shells. Alias `/bashes`",
         },
       ],
     },

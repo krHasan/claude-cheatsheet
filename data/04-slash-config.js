@@ -12,7 +12,7 @@ CHEATSHEET.add({
         {
           key: "/model",
           type: "slash",
-          desc: "Switch model & save as default. `opus` / `sonnet` / `fable` / `haiku`",
+          desc: "Switch model & save as default. `opus` / `sonnet` / `fable` / `haiku` / `best`",
         },
         {
           key: "/effort",
@@ -20,14 +20,19 @@ CHEATSHEET.add({
           desc: "Effort: `low`…`xhigh`, `max`, `ultracode`, `auto`; `status` prints it",
         },
         {
+          key: "/advisor",
+          type: "slash",
+          desc: "Let Claude consult a stronger model at key moments. `/advisor fable`, `off`",
+        },
+        {
           key: "/fast",
           type: "slash",
-          desc: "Toggle fast output mode (speed-optimised API settings)",
+          desc: "Toggle fast output mode (speed-optimised API settings). `/fast on` / `off`",
         },
         {
           key: "/status",
           type: "slash",
-          desc: "Show model, effort level, session directory & account info",
+          desc: "Settings on the Status tab — version, model, account & connectivity",
         },
         {
           key: "/config",
@@ -37,7 +42,7 @@ CHEATSHEET.add({
         {
           key: "/permissions",
           type: "slash",
-          desc: "View & manage tool permissions interactively",
+          desc: "Manage allow, ask & deny rules for tools. Alias `/allowed-tools`",
         },
         {
           key: "/mcp",
@@ -55,6 +60,11 @@ CHEATSHEET.add({
           desc: "Change colour theme",
         },
         {
+          key: "/tui",
+          type: "slash",
+          desc: "Switch renderer — `default` or `fullscreen` (flicker-free) — keeping the conversation",
+        },
+        {
           key: "/ide",
           type: "slash",
           desc: "Manage IDE integrations (VS Code, JetBrains) & show status",
@@ -64,6 +74,6 @@ CHEATSHEET.add({
   ],
   tip: {
     label: "Models available",
-    text: "Opus 5 (default) · Fable 5 · Sonnet 5 · Haiku 4.5",
+    text: "Opus 5.5 (default) · Fable 5.1 · Sonnet 5 · Haiku 4.5",
   },
 });

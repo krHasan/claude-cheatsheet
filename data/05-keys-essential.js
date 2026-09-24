@@ -27,7 +27,7 @@ CHEATSHEET.add({
         {
           key: "Ctrl+D",
           type: "kbd",
-          desc: "Exit Claude Code",
+          desc: "Exit Claude Code — press twice. With text in the prompt, deletes the next character",
         },
         {
           key: "Ctrl+L",
@@ -43,6 +43,11 @@ CHEATSHEET.add({
           key: "Ctrl+S",
           type: "kbd",
           desc: "Stash or restore the current prompt",
+        },
+        {
+          key: "Ctrl+Enter",
+          type: "kbd",
+          desc: "Send queued messages now, interrupting the turn (also [[Ctrl+X Ctrl+S]])",
         },
         {
           key: "Ctrl+Z",
@@ -62,7 +67,7 @@ CHEATSHEET.add({
         {
           key: "Ctrl+X Ctrl+K",
           type: "kbd",
-          desc: "Stop all running background subagents",
+          desc: "Stop all running background subagents — press twice within 3s",
         },
         {
           key: "Ctrl+T",
@@ -92,7 +97,7 @@ CHEATSHEET.add({
         {
           key: "Alt+T",
           type: "kbd",
-          desc: "Toggle extended thinking",
+          desc: "Toggle extended thinking (no effect on Opus 5.5 or Fable — always on)",
         },
         {
           key: "Alt+O",

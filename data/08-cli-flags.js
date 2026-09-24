@@ -62,12 +62,22 @@ CHEATSHEET.add({
         {
           key: "--allowedTools",
           type: "code",
-          desc: 'Restrict tools. e.g. `"Bash(git *) Edit"`',
+          desc: 'Auto-approve matching tools without a prompt, e.g. `"Bash(git *) Edit"`',
+        },
+        {
+          key: '--tools "Bash,Edit,Read"',
+          type: "code",
+          desc: 'Restrict which built-in tools exist. `""` disables all',
+        },
+        {
+          key: "--max-turns N",
+          type: "code",
+          desc: "Cap agentic turns (with `-p`)",
         },
         {
           key: "--permission-mode",
           type: "code",
-          desc: "`acceptEdits` · `auto` · `plan` · `manual` · `dontAsk` · `bypassPermissions`",
+          desc: "`default` (alias `manual`) · `acceptEdits` · `auto` · `plan` · `dontAsk` · `bypassPermissions`",
         },
         {
           key: "--json-schema",
@@ -77,12 +87,12 @@ CHEATSHEET.add({
         {
           key: "--bare",
           type: "code",
-          desc: "Scripted mode — skip hooks, LSP, plugins",
+          desc: "Scripted mode — skip auto-discovery of hooks, skills, plugins, MCP & CLAUDE.md",
         },
         {
           key: "--dangerously-skip-permissions",
           type: "code",
-          desc: "Skip all permission prompts (trusted CI only)",
+          desc: "Same as `--permission-mode bypassPermissions`. Sandboxes only",
         },
       ],
     },
@@ -90,9 +100,9 @@ CHEATSHEET.add({
       label: "Debug, Cloud & Plugins",
       rows: [
         {
-          key: "--debug [filter]",
+          key: "--debug=<filter>",
           type: "code",
-          desc: 'Verbose logging, filterable (`"api,hooks"`)',
+          desc: "Debug logging. The filter binds only with `=`: `--debug=api,hooks`",
         },
         {
           key: "--cloud [desc]",
@@ -102,7 +112,7 @@ CHEATSHEET.add({
         {
           key: "--bg",
           type: "code",
-          desc: "Start detached as a background agent",
+          desc: "Start detached as a background agent; prints the id `claude attach` takes",
         },
         {
           key: "--remote-control",

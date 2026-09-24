@@ -18,6 +18,7 @@ that way unless the project starts being served, or double-clicking the file wil
 index.html              shell only — topbar, empty containers, ordered <script> tags
 assets/css/styles.css   all styling; design tokens at the top
 assets/js/app.js        renderer, search/filter, theme toggle, copy-to-clipboard
+assets/img/favicon.ico  tab icon — Claude's spark, copied from claude.ai/favicon.ico
 data/00-meta.js         version, default model, platform list, footer links
 data/NN-<name>.js       one card per file
 RECONCILIATION.md       what each /update-commands pass changed, newest first
@@ -90,7 +91,7 @@ Version and model facts live in `data/00-meta.js` only — `version`, `defaultMo
 `updated`, `platforms`. They render into both the meta strip and the footer, so there is one
 place to update them.
 
-The command tables were last reconciled against Claude Code 2.1.251 (August 2026).
+The command tables were last reconciled against Claude Code 2.1.281 (September 2026).
 
 Run `/update-commands` to redo that reconciliation against whatever build is installed now.
 The skill carries the full procedure — how to read the command and keybinding tables straight

@@ -13,7 +13,7 @@ CHEATSHEET.add({
     },
     {
       key: "!",
-      desc: "Run bash command directly in session",
+      desc: "Shell mode — run a command, add its output, and Claude responds",
     },
     {
       key: "@",

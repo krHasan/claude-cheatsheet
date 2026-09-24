@@ -22,12 +22,12 @@ CHEATSHEET.add({
         {
           key: "/code-review",
           type: "slash",
-          desc: "Review diff/PR for bugs. `--fix`, `--comment`; `ultra` = cloud multi-agent",
+          desc: "Review diff, PR, branch or path for bugs. `low`…`max` effort, `--fix`, `--comment`; `ultra` = cloud multi-agent. Alias `/review`",
         },
         {
           key: "/simplify",
           type: "slash",
-          desc: "Suggest simplifications to a file or diff, without the bug hunt",
+          desc: "Review changed code for reuse, simplification & efficiency, then apply the fixes — no bug hunt",
         },
         {
           key: "/batch",
@@ -35,9 +35,14 @@ CHEATSHEET.add({
           desc: "Orchestrate large-scale changes across a codebase in parallel",
         },
         {
+          key: "/plan",
+          type: "slash",
+          desc: "Enter plan mode. `/plan fix the auth bug` starts on that task",
+        },
+        {
           key: "/doctor",
           type: "slash",
-          desc: "Diagnose installation, auth, and config issues",
+          desc: "Setup checkup that diagnoses and can fix issues — install, bloated CLAUDE.md, unused skills, slow hooks. Alias `/checkup`",
         },
         {
           key: "/insights",
@@ -52,12 +57,12 @@ CHEATSHEET.add({
         {
           key: "/loop",
           type: "slash",
-          desc: "Re-run a prompt on an interval. `/loop 5m /code-review`",
+          desc: "Re-run a prompt on an interval; omit it and Claude self-paces. `/loop 5m /code-review`",
         },
         {
           key: "/security-review",
           type: "slash",
-          desc: "Check diff, PR, branch, or path for security vulnerabilities",
+          desc: "Scan the current branch's diff against origin's default branch for vulnerabilities",
         },
         {
           key: "/hooks",
@@ -65,9 +70,14 @@ CHEATSHEET.add({
           desc: "View hook configurations for tool events",
         },
         {
+          key: "/run",
+          type: "slash",
+          desc: "Launch and drive your project's app to see a change working",
+        },
+        {
           key: "/verify",
           type: "slash",
-          desc: "Check code for correctness, test coverage, and performance issues",
+          desc: "Build & run your app to confirm a change does what it should — not just tests",
         },
       ],
     },

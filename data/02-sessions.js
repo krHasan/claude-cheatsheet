@@ -30,6 +30,11 @@ CHEATSHEET.add({
           desc: "Runs from any directory — searches this project & its worktrees, then every other project",
         },
         {
+          key: "claude --resume <path>",
+          type: "code",
+          desc: "Resume straight from a `.jsonl` transcript, given its absolute path",
+        },
+        {
           key: "claude --from-pr 123",
           type: "code",
           desc: "Picker filtered to sessions linked to that pull request",
@@ -77,12 +82,12 @@ CHEATSHEET.add({
         {
           key: "/",
           type: "kbd",
-          desc: "Search. Paste a GitHub / GitLab / Bitbucket PR or MR URL to find the session that made it",
+          desc: "Search — or just start typing. Paste a GitHub / GitLab / Bitbucket PR or MR URL to find the session that made it",
         },
         {
           key: "Ctrl+A",
           type: "kbd",
-          desc: "Widen to every project on this machine — also shows each session's path",
+          desc: "Widen to every project on this machine — also shows each session's path. Press again to narrow",
         },
         {
           key: "Ctrl+W",
@@ -140,6 +145,16 @@ CHEATSHEET.add({
           desc: "Copy the conversation and switch into it; the original stays in the picker untouched",
         },
         {
+          key: "/fork [prompt]",
+          type: "slash",
+          desc: "Copy the conversation into a new background session and keep working here",
+        },
+        {
+          key: "/background [prompt]",
+          type: "slash",
+          desc: "Send this session itself to the background and free the terminal. Alias `/bg`",
+        },
+        {
           key: "claude -c --fork-session",
           type: "code",
           desc: "Fork on resume instead. New process, so session permission grants do not carry over",
@@ -170,6 +185,11 @@ CHEATSHEET.add({
           type: "code",
           full: true,
           desc: "Ask an existing session a question and get structured output back",
+        },
+        {
+          key: "claude project purge [path]",
+          type: "code",
+          desc: "Delete a project's transcripts, tasks, file history & config entry now",
         },
         {
           key: "cleanupPeriodDays",
